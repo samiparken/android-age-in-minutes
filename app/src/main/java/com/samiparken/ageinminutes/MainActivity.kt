@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
             clickDatePicker(view)
             Toast.makeText(this, "Button works", Toast.LENGTH_SHORT).show()
         }
-
     }
 
     fun clickDatePicker(view: View) {
@@ -31,12 +30,19 @@ class MainActivity : AppCompatActivity() {
         DatePickerDialog(this,
             DatePickerDialog.OnDateSetListener { view, selectedYear, selectedMonth, selectedDay ->
                 Toast.makeText(this, "$selectedYear/${selectedMonth+1}/$selectedDay", Toast.LENGTH_LONG).show()
-                val selectedDate = "$selectedYear/${selectedMonth+1}/$selectedDay"
+                val selectedDateString = "$selectedYear/${selectedMonth+1}/$selectedDay"
+                tvSelectedDate.setText(selectedDateString)
 
                 //Formatting Date
                 val sdf = SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH)
-                val theDate = sdf.parse(selectedDate).toString()
-                tvSelectedDate.setText(theDate)
+                val theDate = sdf.parse(selectedDateString)
+                val selectedDateInMinutes = theDate!!.time / 60000
+
+                val currentDate = sdf.parse(sdf.format(System.currentTimeMillis()))
+                val currentDateInMinutes = currentDate!!.time / 60000
+                val ageInMins = currentDateInMinutes - selectedDateInMinutes
+                tvAgeInMinutes.setText(ageInMins.toString())
+
             },
             year, month, day).show()
     }
