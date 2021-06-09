@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Selected Date"
-        android:textColor="@color/description"
+        android:textColor="@color/lightGreyTextColor"
         android:textSize="15sp"
         android:textStyle="bold" />
 
@@ -81,7 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="In minutes till date"
-        android:textColor="@color/description"
+        android:textColor="@color/lightGreyTextColor"
         android:textSize="15sp"
         android:textStyle="bold" />
 
